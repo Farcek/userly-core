@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 import { connection } from './connection';
 
 import * as until from 'util';
-const sqlTpl = require('./user.sql');
+
 
 export interface IAttributes {
     id: string;

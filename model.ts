@@ -3,9 +3,10 @@ import { connection } from "./models/connection";
 
 import * as IClient from "./models/client";
 import * as IUser from "./models/user";
+import * as IResetpass from "./models/resetpass";
 
 export {
-    IClient, IUser
+    IClient, IUser, IResetpass
 }
 
 export async function check() {    
