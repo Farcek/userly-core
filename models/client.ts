@@ -6,6 +6,8 @@ import * as IUser from './user';
 export interface IAttributes {
     id: number | null;
     name: string;
+
+    domain: string;
     usertable: string;
 
     /**
@@ -65,6 +67,11 @@ export const Client = (() => {
             field: "id",
             primaryKey: true,
             autoIncrement: true
+        },
+        domain: {
+            type: Sequelize.STRING,
+            field: "domain",
+            allowNull: false
         },
         name: {
             type: Sequelize.STRING,
