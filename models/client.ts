@@ -16,6 +16,11 @@ export interface IAttributes {
     tokenkey: string
 
     /**
+     * server secret key
+     */
+    saltkey: string
+
+    /**
      * User id
      */
     ovner: string;
@@ -86,6 +91,9 @@ export const Client = (() => {
         ovner: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        saltkey: {
+            type: Sequelize.STRING
         },
         tokenkey: {
             type: Sequelize.STRING
