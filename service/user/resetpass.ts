@@ -21,3 +21,24 @@ export async function createResetpass(app: IModel.IClient.IInstance, UserModel: 
     }
 }
 
+export async function varifyResetpass(app: IModel.IClient.IInstance, codeid: number, code: string) {
+
+    let codeRow = await IModel.IResetpass.ResetPass.findById(codeid || 0);
+    if (codeRow) {
+        if (codeRow.appid === app.id) {
+            let UserModel = await IModel.IClient.userModelByApp(app);
+            let user = await UserModel.findById(codeRow.userid);
+            if (user) {
+                let rowCode = (codeRow.code || '').toLowerCase();
+                let userCode = (code || '').trim().toLowerCase();
+                if (rowCode === userCode) {
+                    return {
+                        codeRow, UserModel, user
+                    }
+                }
+            }
+        }
+    }
+    throw 'not mached code'
+
+}
