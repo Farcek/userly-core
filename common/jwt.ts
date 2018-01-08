@@ -5,6 +5,8 @@ export interface IJwtEncryptionOption {
     expiresIn: string
 
 }
+
+
 export function jwtEncryption<T>(obj: T, option: IJwtEncryptionOption): string {
     return jwt.sign(obj, option.pass, {
         jwtid: option.jwtid,
@@ -12,13 +14,18 @@ export function jwtEncryption<T>(obj: T, option: IJwtEncryptionOption): string {
     });
 }
 
+
+export function jwtDecode<T>(tockenStr:string): T {
+    return jwt.decode(tockenStr);
+}
+
 export interface IJwtDecryptionOption {
     pass: string
     jwtid: string
 }
-export function jwtDecryption<T>(data: string, option: IJwtDecryptionOption): T {
+export function jwtDecryption<T>(tockenStr: string, option: IJwtDecryptionOption): T {
     try {
-        return jwt.verify(data, option.pass, {
+        return jwt.verify(tockenStr, option.pass, {
             jwtid: option.jwtid
         });
     } catch (error) {
