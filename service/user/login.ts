@@ -1,4 +1,4 @@
-import {ILoginResult} from './interface';
+import { ILoginResult } from './interface';
 import * as IModel from '../../model';
 import * as ICommon from '../../common';
 import * as errors from '../../errors';
@@ -70,6 +70,7 @@ export async function doLogin(user: IModel.IUser.IInstance): Promise<ILoginResul
         userid: user.id,
         //appid:user.app,
         name: user.name,
-        confirmed: user.confirmed
+        confirmed: user.confirmed,
+        roles: IModel.IUser.parseRoles(user)
     }
 }
