@@ -68,7 +68,6 @@ export async function doLogin(user: IModel.IUser.IInstance): Promise<ILoginResul
 
     return {
         userid: user.id,
-        //appid:user.app,
         name: user.name,
         confirmed: user.confirmed,
         roles: IModel.IUser.parseRoles(user)
